@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
 
@@ -31,24 +32,32 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Icon> scoreKeeper = [];
 
-  void checkAnswer(bool userPickedAnswer){
-    bool correctAnswer = quizBrain.getCorrectAnswer();
+  void checkAnswer(bool userPickedAnswer, BuildContext context){
+    if(quizBrain.lastQuestion()){
+      Alert(
+          context: context,
+        title: "Alert",
+        desc: "No more questions"
+      ).show();
+    }else{
+      bool correctAnswer = quizBrain.getCorrectAnswer();
 
-    setState(() {
-      if(userPickedAnswer == correctAnswer){
-        scoreKeeper.add(Icon(
-          Icons.check,
-          color: Colors.green,
-        ));
-      }else{
-        scoreKeeper.add(Icon(
-          Icons.close,
-          color: Colors.red,
-        ));
-      }
+      setState(() {
+        if(userPickedAnswer == correctAnswer){
+          scoreKeeper.add(Icon(
+            Icons.check,
+            color: Colors.green,
+          ));
+        }else{
+          scoreKeeper.add(Icon(
+            Icons.close,
+            color: Colors.red,
+          ));
+        }
 
-      quizBrain.nextQuestion();
-    });
+        quizBrain.nextQuestion();
+      });
+    }
   }
 
   @override
@@ -87,7 +96,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                checkAnswer(true);
+                checkAnswer(true, context);
               },
             ),
           ),
@@ -105,7 +114,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                checkAnswer(false);
+                checkAnswer(false, context);
               },
             ),
           ),

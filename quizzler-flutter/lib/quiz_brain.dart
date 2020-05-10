@@ -43,4 +43,9 @@ class QuizBrain {
   bool getCorrectAnswer(){
     return _questionBank[_questionNumber].questionAnswer;
   }
+
+  bool lastQuestion(){
+    bool last = _questionNumber == _questionBank.length -1;
+    return last;
+  }
 }
