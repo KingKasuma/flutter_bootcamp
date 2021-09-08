@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/opt/flutter"
-export "FLUTTER_APPLICATION_PATH=/media/mike/Projects/Mobile/Flutter/Udemy/flutter_bootcamp/bitcoin-ticker-flutter"
+export "FLUTTER_ROOT=/home/mike/snap/flutter/common/flutter"
+export "FLUTTER_APPLICATION_PATH=/home/mike/Projects/OWN/Mobile/Flutter/flutter_bootcamp/bitcoin-ticker-flutter"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
